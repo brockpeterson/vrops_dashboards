@@ -1,0 +1,1 @@
+{"cc4058b3-23ed-408f-8243-6bb3277e4150":{"resourceKinds":[{"resourceKindKey":"VirtualMachine","adapterKindKey":"VMWARE"}],"modificationTime":1542143376521,"name":"uptime_in_hours","formula":"(${this, metric=sys|osUptime_latest}/60)/60","description":""}}
