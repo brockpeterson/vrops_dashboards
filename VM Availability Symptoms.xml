@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><alertContent>
+    <SymptomDefinitions>
+        <SymptomDefinition adapterKind="VMWARE" disableInBasePolicy="true" id="SymptomDefinition-b92986c7-6eb3-4633-a963-0b6a9d3097c2" name="VM - System - OS Uptime" resourceKind="VirtualMachine">
+            <State severity="critical">
+                <Condition key="sys|osUptime_latest" operator="&lt;" thresholdType="static" type="metric" value="300.0" valueType="numeric"/>
+            </State>
+        </SymptomDefinition>
+        <SymptomDefinition adapterKind="VMWARE" disableInBasePolicy="true" id="SymptomDefinition-cdbb0254-6aa3-4f8f-bc80-f9fd4e924436" name="VM - System - Powered On" resourceKind="VirtualMachine">
+            <State severity="critical">
+                <Condition key="sys|poweredOn" operator="!=" thresholdType="static" type="metric" value="1.0" valueType="numeric"/>
+            </State>
+        </SymptomDefinition>
+        <SymptomDefinition adapterKind="VMWARE" disableInBasePolicy="true" id="SymptomDefinition-f597a79b-985b-45ed-99d2-e297b3e9dad1" name="VM - Summary - Runtime - Power State" resourceKind="VirtualMachine">
+            <State severity="critical">
+                <Condition key="summary|runtime|powerState" operator="!=" thresholdType="static" type="property" value="Powered On" valueType="string"/>
+            </State>
+        </SymptomDefinition>
+    </SymptomDefinitions>
+</alertContent>

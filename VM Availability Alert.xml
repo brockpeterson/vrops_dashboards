@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><alertContent>
+    <AlertDefinitions>
+        <AlertDefinition adapterKind="VMWARE" description="VM Down" disableInBasePolicy="true" id="AlertDefinition-c00c5266-0d8c-4ecb-a91e-124f25568b7b" name="VM Down" resourceKind="VirtualMachine" subType="18" type="16">
+            <State severity="automatic">
+                <SymptomSets operator="or">
+                    <SymptomSet applyOn="self" operator="and" ref="SymptomDefinition-f597a79b-985b-45ed-99d2-e297b3e9dad1"/>
+                    <SymptomSet applyOn="self" operator="and" ref="SymptomDefinition-b92986c7-6eb3-4633-a963-0b6a9d3097c2"/>
+                    <SymptomSet applyOn="self" operator="and" ref="SymptomDefinition-cdbb0254-6aa3-4f8f-bc80-f9fd4e924436"/>
+                </SymptomSets>
+                <Impact key="health" type="badge"/>
+            </State>
+        </AlertDefinition>
+    </AlertDefinitions>
+    <SymptomDefinitions>
+        <SymptomDefinition adapterKind="VMWARE" disableInBasePolicy="true" id="SymptomDefinition-cdbb0254-6aa3-4f8f-bc80-f9fd4e924436" name="VM - System - Powered On" resourceKind="VirtualMachine">
+            <State severity="critical">
+                <Condition key="sys|poweredOn" operator="!=" thresholdType="static" type="metric" value="1.0" valueType="numeric"/>
+            </State>
+        </SymptomDefinition>
+        <SymptomDefinition adapterKind="VMWARE" disableInBasePolicy="true" id="SymptomDefinition-b92986c7-6eb3-4633-a963-0b6a9d3097c2" name="VM - System - OS Uptime" resourceKind="VirtualMachine">
+            <State severity="critical">
+                <Condition key="sys|osUptime_latest" operator="&lt;" thresholdType="static" type="metric" value="300.0" valueType="numeric"/>
+            </State>
+        </SymptomDefinition>
+        <SymptomDefinition adapterKind="VMWARE" disableInBasePolicy="true" id="SymptomDefinition-f597a79b-985b-45ed-99d2-e297b3e9dad1" name="VM - Summary - Runtime - Power State" resourceKind="VirtualMachine">
+            <State severity="critical">
+                <Condition key="summary|runtime|powerState" operator="!=" thresholdType="static" type="property" value="Powered On" valueType="string"/>
+            </State>
+        </SymptomDefinition>
+    </SymptomDefinitions>
+</alertContent>
